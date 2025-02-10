@@ -13,7 +13,7 @@ coverage
 # next.js
 .next/
 out/
-build
+
 apps/app/main
 apps/electron-package/layers/**/*
 
@@ -37,3 +37,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+/.idea/
+/build/electron/
+/build/static/
