@@ -1,0 +1,80 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="66">
+            <item index="0" class="java.lang.String" itemvalue="trio-websocket" />
+            <item index="1" class="java.lang.String" itemvalue="cffi" />
+            <item index="2" class="java.lang.String" itemvalue="h11" />
+            <item index="3" class="java.lang.String" itemvalue="MarkupSafe" />
+            <item index="4" class="java.lang.String" itemvalue="numpy" />
+            <item index="5" class="java.lang.String" itemvalue="Jinja2" />
+            <item index="6" class="java.lang.String" itemvalue="sniffio" />
+            <item index="7" class="java.lang.String" itemvalue="trio" />
+            <item index="8" class="java.lang.String" itemvalue="appdirs" />
+            <item index="9" class="java.lang.String" itemvalue="selenium" />
+            <item index="10" class="java.lang.String" itemvalue="sentry-sdk" />
+            <item index="11" class="java.lang.String" itemvalue="pyzmq" />
+            <item index="12" class="java.lang.String" itemvalue="pywin32-ctypes" />
+            <item index="13" class="java.lang.String" itemvalue="anyio" />
+            <item index="14" class="java.lang.String" itemvalue="scapy" />
+            <item index="15" class="java.lang.String" itemvalue="ttkbootstrap" />
+            <item index="16" class="java.lang.String" itemvalue="itsdangerous" />
+            <item index="17" class="java.lang.String" itemvalue="outcome" />
+            <item index="18" class="java.lang.String" itemvalue="Flask" />
+            <item index="19" class="java.lang.String" itemvalue="blinker" />
+            <item index="20" class="java.lang.String" itemvalue="pyinstaller" />
+            <item index="21" class="java.lang.String" itemvalue="python-docx" />
+            <item index="22" class="java.lang.String" itemvalue="tornado" />
+            <item index="23" class="java.lang.String" itemvalue="Werkzeug" />
+            <item index="24" class="java.lang.String" itemvalue="zope.interface" />
+            <item index="25" class="java.lang.String" itemvalue="wsproto" />
+            <item index="26" class="java.lang.String" itemvalue="attrs" />
+            <item index="27" class="java.lang.String" itemvalue="pyinstaller-hooks-contrib" />
+            <item index="28" class="java.lang.String" itemvalue="sortedcontainers" />
+            <item index="29" class="java.lang.String" itemvalue="WMI" />
+            <item index="30" class="java.lang.String" itemvalue="imageio" />
+            <item index="31" class="java.lang.String" itemvalue="PySocks" />
+            <item index="32" class="java.lang.String" itemvalue="httpcore" />
+            <item index="33" class="java.lang.String" itemvalue="psutil" />
+            <item index="34" class="java.lang.String" itemvalue="bs4" />
+            <item index="35" class="java.lang.String" itemvalue="curl_cffi" />
+            <item index="36" class="java.lang.String" itemvalue="PyInstaller" />
+            <item index="37" class="java.lang.String" itemvalue="scikit-learn" />
+            <item index="38" class="java.lang.String" itemvalue="waifu2x-vulkan" />
+            <item index="39" class="java.lang.String" itemvalue="requests" />
+            <item index="40" class="java.lang.String" itemvalue="llvmlite" />
+            <item index="41" class="java.lang.String" itemvalue="tensorflow" />
+            <item index="42" class="java.lang.String" itemvalue="natsort" />
+            <item index="43" class="java.lang.String" itemvalue="pyqtgraph" />
+            <item index="44" class="java.lang.String" itemvalue="pycryptodomex" />
+            <item index="45" class="java.lang.String" itemvalue="pillow" />
+            <item index="46" class="java.lang.String" itemvalue="librosa" />
+            <item index="47" class="java.lang.String" itemvalue="PySide6" />
+            <item index="48" class="java.lang.String" itemvalue="lxml" />
+            <item index="49" class="java.lang.String" itemvalue="spleeter" />
+            <item index="50" class="java.lang.String" itemvalue="urllib3" />
+            <item index="51" class="java.lang.String" itemvalue="PySide2" />
+            <item index="52" class="java.lang.String" itemvalue="PyQt5-Qt5" />
+            <item index="53" class="java.lang.String" itemvalue="PyQt5" />
+            <item index="54" class="java.lang.String" itemvalue="PyQt5_sip" />
+            <item index="55" class="java.lang.String" itemvalue="PySide6_sip" />
+            <item index="56" class="java.lang.String" itemvalue="PySide6-Qt5" />
+            <item index="57" class="java.lang.String" itemvalue="tqdm" />
+            <item index="58" class="java.lang.String" itemvalue="DrissionPage" />
+            <item index="59" class="java.lang.String" itemvalue="cssselect" />
+            <item index="60" class="java.lang.String" itemvalue="DownloadKit" />
+            <item index="61" class="java.lang.String" itemvalue="imageio-ffmpeg" />
+            <item index="62" class="java.lang.String" itemvalue="moviepy" />
+            <item index="63" class="java.lang.String" itemvalue="DataRecorder" />
+            <item index="64" class="java.lang.String" itemvalue="fastapi" />
+            <item index="65" class="java.lang.String" itemvalue="SQLAlchemy" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

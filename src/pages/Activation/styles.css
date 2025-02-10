@@ -1,0 +1,76 @@
+.activation-top-text {
+    font-size: 18px;
+}
+.activation-top-text-wrapper {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 22px;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: 15px;
+}
+
+.activation-input-wrapper {
+    margin-left: 12px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.activation-code-prompt {
+    font-size: 18px;
+    width: 108px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.activation-code-prompt-content {
+    align-self: center;
+}
+
+.activation-discount {
+    font-size: 21px;
+    color:beige;
+    text-shadow: 1px 1px 1px #666666;
+}
+
+#activation-product-code {
+    user-select: text;
+    font-size: 20px;
+    color:#0015ff;
+    width: 231px;
+    opacity: 0.8;
+    user-select: all;
+}
+
+#activation-activation-code {
+    user-select: text;
+    font-size: 20px;
+    width: 231px;
+    color:#008556;
+    user-select: all;
+}
+
+#activation-product-code-copy-words {
+    background-color: #0400ff;
+    color:#FFFFFF;
+    font-size: 18px;
+    padding: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 7px;
+}
+
+#activation-code-verify {
+    background-color: #e67008;
+    color:#FFFFFF;
+    font-size: 18px;
+    padding: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 7px;
+}

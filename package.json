@@ -1,0 +1,132 @@
+{
+  "name": "jianying-auto-master",
+  "version": "1.1.6",
+  "author": "sl",
+  "description": "jianying-auto-master",
+  "homepage": ".",
+  "main": "build/electron/main.js",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "postinstall": "electron-builder install-app-deps",
+    "electron:dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://127.0.0.1:3000 && tsc -p electron -w\" \"wait-on http://127.0.0.1:3000 && tsc -p electron && electron .\"",
+    "eject": "react-scripts eject",
+    "electron:build": "yarn build && tsc -p electron && electron-builder",
+    "makewin": "electron-builder --win"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.3.6",
+    "@jitsi/robotjs": "^0.6.13",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/electron-devtools-installer": "^2.2.2",
+    "@types/jest": "^29.4.0",
+    "@types/lodash": "^4.17.0",
+    "@types/node": "^18.19.68",
+    "@types/react": "17.0.14",
+    "@types/react-dom": "17.0.14",
+    "antd": "5.5.2",
+    "axios": "1.4.0",
+    "chokidar": "3.6.0",
+    "electron-devtools-installer": "3.2.0",
+    "electron-reload": "1.5.0",
+    "electron-store": "8.1.0",
+    "ffmpeg-static": "5.2.0",
+    "ffprobe-static": "3.1.0",
+    "fluent-ffmpeg": "2.1.2",
+    "getmac": "5.20.0",
+    "image-size": "1.0.2",
+    "json-bigint": "1.0.0",
+    "lodash": "^4.17.21",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-scripts": "5.0.1",
+    "sass": "^1.83.0",
+    "semver": "7.5.0",
+    "subtitles-parser": "^0.0.2",
+    "typescript": "4.9.5",
+    "web-vitals": "^3.1.1",
+    "yarn": "^1.22.22"
+  },
+  "build": {
+    "appId": "com.flowy.app",
+    "extends": null,
+    "files": [
+      "build/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "win": {
+      "asar": true,
+      "asarUnpack": [
+        "**/node_modules/regedit/**/*"
+      ],
+      "extraResources": [
+        "./assets/vbs/**/*"
+      ],
+      "artifactName": "${productName}-${os}-${version}-${arch}.${ext}",
+      "target": "nsis",
+      "icon": "logo.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "logo.ico",
+      "uninstallerIcon": "logo.ico",
+      "installerHeaderIcon": "logo.ico",
+      "createDesktopShortcut": "always",
+      "createStartMenuShortcut": true,
+      "shortcutName": "剪映自动化大师"
+    },
+    "mac": {
+      "icon": "logo.icns",
+      "category": "public.app-category.productivity",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ]
+    },
+    "afterSign": "./scripts/after-sign.js"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "cross-env": "^7.0.3",
+    "electron": "^23.3.13",
+    "electron-builder": "^25.1.8",
+    "wait-on": "^7.0.1"
+  },
+  "resolutions": {
+    "@types/react": "17.0.14",
+    "@types/react-dom": "17.0.14"
+  },
+  "__npminstall_done": false
+}
