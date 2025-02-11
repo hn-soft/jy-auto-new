@@ -14,7 +14,11 @@
     "electron:dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://127.0.0.1:3000 && tsc -p electron -w\" \"wait-on http://127.0.0.1:3000 && tsc -p electron && electron .\"",
     "eject": "react-scripts eject",
     "electron:build": "yarn build && tsc -p electron && electron-builder",
-    "makewin": "electron-builder --win"
+
+    "package": "electron-builder --dir",
+    "make": "electron-builder --mac",
+    "makewin": "electron-builder --win",
+    "rebuild": "electron-rebuild"
   },
   "dependencies": {
     "@ant-design/icons": "^5.3.6",
@@ -52,7 +56,7 @@
     "yarn": "^1.22.22"
   },
   "build": {
-    "appId": "com.flowy.app",
+    "appId": "com.yxxz.jianying-auto-master",
     "extends": null,
     "files": [
       "build/**/*"
@@ -70,22 +74,23 @@
       ],
       "artifactName": "${productName}-${os}-${version}-${arch}.${ext}",
       "target": "nsis",
-      "icon": "logo.ico"
+      "icon": "jas.ico"
     },
     "nsis": {
       "oneClick": false,
       "allowElevation": true,
       "allowToChangeInstallationDirectory": true,
-      "installerIcon": "logo.ico",
-      "uninstallerIcon": "logo.ico",
-      "installerHeaderIcon": "logo.ico",
+      "installerIcon": "jas.ico",
+      "uninstallerIcon": "jas.ico",
+      "installerHeaderIcon": "jas.ico",
       "createDesktopShortcut": "always",
       "createStartMenuShortcut": true,
       "shortcutName": "剪映自动化大师"
     },
     "mac": {
-      "icon": "logo.icns",
+      "icon": "jas.icns",
       "category": "public.app-category.productivity",
+      "identity": "CCQKQG9HUK",
       "target": [
         {
           "target": "dmg",
