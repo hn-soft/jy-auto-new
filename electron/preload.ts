@@ -40,10 +40,9 @@ import type {
   ChangeFileLevelOne2TwoType,
   SetFirstProjectClickDeviationParamType,
   RenameReplacedOutputParamType,
-    SplitFilesParamType,
-    CheckAudioResourcesParamType,
-    RenameExtensionCaseParamType
-
+  SplitFilesParamType,
+  CheckAudioResourcesParamType,
+  RenameExtensionCaseParamType
 
 } from "./utils/types";
 

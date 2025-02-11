@@ -11,6 +11,7 @@ import {
   handleOpenDirectory,
   handleOpenFile,
 } from "./methods/common";
+
 // alignment
 import { handleExtractPureTextContents } from "./methods/alignment/extractPureTextContents";
 import { handleSpiritAlignMaterial } from "./methods/alignment/spiritAlignMaterial";
@@ -23,6 +24,7 @@ import { handleProfessionalFillTextGap } from "./methods/alignment/professionalF
 import { handleProfessionalMergeText } from "./methods/alignment/professionalMergeText";
 import { handleProfessionalMergeAudio } from "./methods/alignment/professionalMergeAudio";
 import { handleProfessionalCutAudioByBeat } from "./methods/alignment/professionalCutAudioByBeat";
+
 // animation
 import { handleAddKeyframes } from "./methods/animation/addKeyframes";
 import {
@@ -30,6 +32,7 @@ import {
   handleLoadTransitionInfos,
   handleGetIsTransitionExist,
 } from "./methods/animation/addTransitions";
+
 import {
   handleLoadInOutComboInfos,
   handleGetIsInOutComboExist,
@@ -38,31 +41,39 @@ import {
 import { handleAddEffects } from "./methods/animation/addEffects";
 import { handleAddFilters } from "./methods/animation/addFilters";
 import { handleAddStickers } from "./methods/animation/addStickers";
+
 // material replacement
 import { handlePreReplaceMaterial } from "./methods/replacement/preReplaceMaterial";
 import { handleCheckMaterialToReplace } from "./methods/replacement/checkMaterialToReplace";
 import { handleCheckMaterialToRefill } from "./methods/replacement/checkMaterialToRefill";
 import { handleCheckMaterialToPartitionRefill } from "./methods/replacement/checkMaterialToPartitionRefill";
 import { handleCheckNewProject } from "./methods/replacement/checkNewProject";
+
 import {
   handleReplaceMaterial,
   handleAutoReplaceMaterial,
 } from "./methods/replacement/replaceMaterial";
+
 import {
   handleRefillMaterial,
   handleAutoRefillMaterial,
 } from "./methods/replacement/refillMaterial";
+
 import {
   handlePartitionRefillMaterial,
   handleAutoPartitionRefillMaterial,
 } from "./methods/replacement/partitionRefillMaterial";
+
 import { handleChangeFileLevelOne2Two } from "./methods/replacement/changeFileLevelOne2Two";
 import { handleRenameExtensionCase } from "./methods/replacement/renameExtensionCase";
 import { handleRenameReplacedOutput } from "./methods/replacement/renameReplacedOutput";
+
 // material replacement modifier
 import { handleCheckAudioResources } from "./methods/replacement/modifier/checkAudioResources";
+
 // split
 import { handleSplitFiles } from "./methods/split/splitFiles";
+
 // export
 import { handleExportMainTrackAllClips } from "./methods/export/exportMainTrackAllClips";
 
@@ -276,6 +287,10 @@ function createWindow() {
       .then((res) => {
         if (res && res.data) {
           const resBody = res.data;
+
+          //console.log(resBody);
+
+
           const ni = resBody.noticeinfo;
           const nih = resBody.noticeinfohtml;
           if (
@@ -297,12 +312,17 @@ function createWindow() {
             }
           }
           const contact = resBody.contact;
+
+          console.log(contact)
           if (contact != null && contact.length > 0) {
             store.set(STORE_KEY.CONTACT, encodeSecret(contact));
           }
         }
       })
-      .catch(() => {});
+      .catch((e) => {
+
+        console.error(e);
+      });
   });
 
   // if (!app.isPackaged) {
@@ -310,9 +330,13 @@ function createWindow() {
   //   store.delete(STORE_KEY.USING_ACTIVATION_CODE);
   //   store.delete(STORE_KEY.TRIAL_TIME_LEFT);
   // }
+
+
   if (store.get(STORE_KEY.TRIAL_TIME_LEFT) === undefined) {
     store.set(STORE_KEY.TRIAL_TIME_LEFT, TRIAL_TIME_INITIAL);
   }
+  console.log("TRIAL_TIME_LEFT "+store.get(STORE_KEY.TRIAL_TIME_LEFT))
+
   // 弥补先前有一次释出50次试用的版本的问题，强行把这部分用户的试用次数改为5.
   if (store.get(STORE_KEY.TRIAL_TIME_LEFT) > TRIAL_TIME_INITIAL
     && store.get(STORE_KEY.TRIAL_TIME_LEFT) <= 50) {
@@ -342,6 +366,7 @@ app.whenReady().then(() => {
   ipcMain.handle("load-project-infos", handleLoadProjectInfos);
   ipcMain.handle("load-transition-infos", handleLoadTransitionInfos);
   ipcMain.handle("get-is-transition-exist", handleGetIsTransitionExist);
+
   // animation
   ipcMain.handle("add-keyframes", handleAddKeyframesWrapper);
   ipcMain.handle("undo-add-keyframes", handleUndoAddKeyframes);
@@ -359,67 +384,33 @@ app.whenReady().then(() => {
   ipcMain.handle("undo-add-adjusts", handleUndoAddAdjusts);
   ipcMain.handle("add-stickers", handleAddStickersWrapper);
   ipcMain.handle("undo-add-stickers", handleUndoAddStickers);
+
   // alignment
   ipcMain.handle("spirit-align-material", handleSpiritAlignMaterialWrapper);
   ipcMain.handle("undo-spirit-align-material", handleUndoSpiritAlignMaterial);
-  ipcMain.handle(
-    "master-pro-align-material",
-    handleMasterProAlignMaterialWrapper
-  );
-  ipcMain.handle(
-    "undo-master-pro-align-material",
-    handleUndoMasterProAlignMaterial
-  );
+  ipcMain.handle("master-pro-align-material", handleMasterProAlignMaterialWrapper);
+  ipcMain.handle("undo-master-pro-align-material", handleUndoMasterProAlignMaterial);
+
   ipcMain.handle("cut-ms-audio", handleCutMsAudioWrapper);
   ipcMain.handle("undo-cut-ms-audio", handleUndoCutMsAudio);
   ipcMain.handle("extract-pure-text-contents", handleExtractPureTextContents);
-  ipcMain.handle(
-    "spirit-calibrate-material",
-    handleSpiritCalibrateMaterialWrapper
-  );
-  ipcMain.handle(
-    "undo-spirit-calibrate-material",
-    handleUndoSpiritCalibrateMaterial
-  );
+  ipcMain.handle("spirit-calibrate-material", handleSpiritCalibrateMaterialWrapper);
+  ipcMain.handle("undo-spirit-calibrate-material", handleUndoSpiritCalibrateMaterial);
+
   ipcMain.handle("master-align-material", handleMasterAlignMaterialWrapper);
   ipcMain.handle("undo-master-align-material", handleUndoMasterAlignMaterial);
-  ipcMain.handle(
-    "professional-align-material",
-    handleProfessionalAlignMaterialWrapper
-  );
-  ipcMain.handle(
-    "undo-professional-align-material",
-    handleUndoProfessionalAlignMaterial
-  );
-  ipcMain.handle(
-    "professional-fill-text-gap",
-    handleProfessionalFillTextGapWrapper
-  );
-  ipcMain.handle(
-    "undo-professional-fill-text-gap",
-    handleUndoProfessionalFillTextGap
-  );
+  ipcMain.handle("professional-align-material", handleProfessionalAlignMaterialWrapper);
+
+  ipcMain.handle("undo-professional-align-material", handleUndoProfessionalAlignMaterial);
+  ipcMain.handle("professional-fill-text-gap", handleProfessionalFillTextGapWrapper);
+  ipcMain.handle("undo-professional-fill-text-gap", handleUndoProfessionalFillTextGap);
   ipcMain.handle("professional-merge-text", handleProfessionalMergeTextWrapper);
-  ipcMain.handle(
-    "undo-professional-merge-text",
-    handleUndoProfessionalMergeText
-  );
-  ipcMain.handle(
-    "professional-merge-audio",
-    handleProfessionalMergeAudioWrapper
-  );
-  ipcMain.handle(
-    "undo-professional-merge-audio",
-    handleUndoProfessionalMergeAudio
-  );
-  ipcMain.handle(
-    "professional-cut-audio-by-beat",
-    handleProfessionalCutAudioByBeatWrapper
-  );
-  ipcMain.handle(
-    "undo-professional-cut-audio-by-beat",
-    handleUndoProfessionalCutAudioByBeat
-  );
+  ipcMain.handle("undo-professional-merge-text", handleUndoProfessionalMergeText);
+  ipcMain.handle("professional-merge-audio", handleProfessionalMergeAudioWrapper);
+  ipcMain.handle("undo-professional-merge-audio", handleUndoProfessionalMergeAudio);
+  ipcMain.handle("professional-cut-audio-by-beat", handleProfessionalCutAudioByBeatWrapper);
+  ipcMain.handle("undo-professional-cut-audio-by-beat", handleUndoProfessionalCutAudioByBeat);
+
   // material replacement
   ipcMain.handle("open-directory", handleOpenDirectoryWrapper);
   ipcMain.handle("open-file", handleOpenFileWrapper);
@@ -446,10 +437,13 @@ app.whenReady().then(() => {
   ipcMain.handle("set-is-3-exit-window", handleSetIs3ExitWindow);
   ipcMain.handle("rename-extension-case", handleRenameExtensionCase);
   ipcMain.handle("rename-replaced-output", handleRenameReplacedOutput);
+
   // material replacement modifier
   ipcMain.handle("check-audio-resources", handleCheckAudioResources);
+
   // Split
   ipcMain.handle("split-files", handleSplitFilesWrapper);
+
   // Export
   ipcMain.handle("export-main-track-all-clips", handleExportMainTrackAllClipsWrapper);
 

@@ -1,4 +1,7 @@
-export const HOST = "https://friendpei.lxhfight.com";
+//export const HOST = "https://friendpei.lxhfight.com";
+export const HOST = "http://192.168.1.231:9099";
+
+
 export const TRANS_URL = `${HOST}/api/jytranslate/trans`;
 export const ACTIVATE_URL = `${HOST}/api/common/activate`;
 export const NOTI_URL = `${HOST}/api/common/noti`;

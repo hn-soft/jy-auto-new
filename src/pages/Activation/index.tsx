@@ -57,7 +57,7 @@ export default class Activation extends React.Component<PropsType, StateType> {
       },
       appVersion: "",
       isActivating: false,
-      contact: "微信 yxxz1024 或 QQ 414151500",
+      contact: "微信 yshelo 或 QQ 1479058",
     };
   }
 

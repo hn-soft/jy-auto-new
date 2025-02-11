@@ -1,8 +1,8 @@
-import { app } from "electron";
-import { STORE_KEY, ACTIVATE_URL, BASIC_OFFICIAL_USAGE_LIMIT_PER_MONTH } from "../utils/const";
-import { computeProductCode20, maskOperate } from "../utils/activationUtils";
+import {app} from "electron";
+import {ACTIVATE_URL, BASIC_OFFICIAL_USAGE_LIMIT_PER_MONTH, STORE_KEY} from "../utils/const";
+import {computeProductCode20, maskOperate} from "../utils/activationUtils";
 import axios from "axios";
-import { encodeSecret, decodeSecret } from "../utils/codeSecret";
+import {decodeSecret, encodeSecret} from "../utils/codeSecret";
 
 const Store = require("electron-store");
 const store = new Store();
@@ -28,9 +28,7 @@ export const handleGetActivationStatus = () => {
     return { status: "trial", gt: 0, trialTimeLeft: 0 };
   }
   const rpcRes = handleGetRendererProductCode();
-  const latestInternetTimestampS = store.get(
-    STORE_KEY.LATEST_INTERNET_TIMESTAMP_S
-  );
+  const latestInternetTimestampS = store.get(STORE_KEY.LATEST_INTERNET_TIMESTAMP_S);
   if (rpcRes.status === "error") {
     return { status: "trial", gt: 0, trialTimeLeft: 0 };
   }
@@ -69,7 +67,7 @@ export const handleGetActivationStatus = () => {
 };
 
 export const handleGetContact = () => {
-  const DEFAULT_CONTACT = "微信 yxxz1024 或 QQ 414151500";
+  const DEFAULT_CONTACT = "微信 yshelo 或 QQ 1479058";
   try {
     if (store.get(STORE_KEY.CONTACT) === undefined) {
       return { status: "success", data: DEFAULT_CONTACT };
@@ -124,6 +122,8 @@ export const handleActivateProduct = async (
   _event: any,
   param: { productCode: string; activationCode: string }
 ) => {
+
+  console.log("激活产品")
   if (param.activationCode === "00000000000000000000") {
     try {
       store.set(STORE_KEY.OFFLINE_ACTIVATION, true);
@@ -169,9 +169,8 @@ export const handleActivateProduct = async (
     store.set(STORE_KEY.TRIAL_TIME_LEFT, 99999999);
     const tsStr = maskOperate(param.activationCode, "remove").substring(9, 19);
     const expirationDate = new Date(parseInt(tsStr, 10) * 1000);
-    const readableDateStr = expirationDate.toLocaleDateString("zh-CN", {
-      timeZone: "Asia/Shanghai",
-    });
+    const readableDateStr = expirationDate.toLocaleDateString("zh-CN", {timeZone: "Asia/Shanghai"});
+
     const tierRes = handleGetOfficialTier(param.activationCode);
     return { status: "success", data: readableDateStr, dataIsForever: parseInt(tsStr, 10) > 4000000000, tier: tierRes.data };
   } catch (e) {
@@ -247,8 +246,7 @@ export const offlineVerify = (param: { productCode: string; activationCode: stri
 export const getMacAddrPure = () => {
   try {
     const getMAC = require("getmac").default;
-    const macAddrPure = getMAC().split(":").join("");
-    return macAddrPure;
+    return getMAC().split(":").join("");
   } catch (e) {
     return "";
   }
