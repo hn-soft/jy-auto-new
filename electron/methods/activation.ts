@@ -9,6 +9,7 @@ const store = new Store();
 
 export const handleGetRendererProductCode = () => {
   try {
+    console.log("激活码:",store.get(STORE_KEY.USING_ACTIVATION_CODE))
     const activationCode = decodeSecret(store.get(STORE_KEY.USING_ACTIVATION_CODE));
     let productCode = "";
     if (activationCode != undefined) {
@@ -16,6 +17,8 @@ export const handleGetRendererProductCode = () => {
     } else {
       productCode = computeProductCode20("init");
     }
+
+    console.log("productCode",productCode)
     return { status: "success", data: productCode };
   } catch (e) {
     // @ts-ignore
@@ -33,6 +36,9 @@ export const handleGetActivationStatus = () => {
     return { status: "trial", gt: 0, trialTimeLeft: 0 };
   }
   const rendererProductCode = rpcRes.data;
+
+  // 12533040034942379009
+  // 如果索引第六个为0 表示为试用版
   if (rendererProductCode.charAt(5) === "0") {
     const trial_time_left = store.get(STORE_KEY.TRIAL_TIME_LEFT);
     return {
@@ -41,6 +47,7 @@ export const handleGetActivationStatus = () => {
       trialTimeLeft: trial_time_left,
     };
   } else {
+    // 是否过期
     const tsStr = rendererProductCode.substring(9, 19);
     const utInt = parseInt(tsStr, 10);
     const dateNow = Date.now();
@@ -145,11 +152,13 @@ export const handleActivateProduct = async (
       return { status: "error", data: "产品信息码出错了。"};
     }
     if (store.get(STORE_KEY.OFFLINE_ACTIVATION)) {
+      //离线激活
       const isTrueActivationCode = offlineVerify(param);
       if (!isTrueActivationCode) {
         return { status: "error", data: "错误的激活码，请检查是否输入错误！" };
       }
     } else {
+      //线上激活
       const res = await axios.post(ACTIVATE_URL, {
         pc: param.productCode,
         ac: param.activationCode,
@@ -226,6 +235,7 @@ export const isSimpleRuleWrong = () => {
   return !isMatched;
 }
 
+// 离线激活
 export const offlineVerify = (param: { productCode: string; activationCode: string }) => {
   const decodedAt = maskOperate(param.activationCode, "remove");
   let sum1 = 0;

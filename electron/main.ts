@@ -216,7 +216,7 @@ function createWindow() {
   } else {
     win.loadURL("http://localhost:3000/index.html");
 
-    win.webContents.openDevTools();
+    //win.webContents.openDevTools();
 
     // Hot Reloading on 'node_modules/.bin/electronPath'
     require("electron-reload")(__dirname, {
@@ -325,11 +325,12 @@ function createWindow() {
       });
   });
 
-  // if (!app.isPackaged) {
-  //   store.delete(STORE_KEY.USING_PRODUCT_CODE);
-  //   store.delete(STORE_KEY.USING_ACTIVATION_CODE);
-  //   store.delete(STORE_KEY.TRIAL_TIME_LEFT);
-  // }
+  //调试状态 删除注册信息
+  if (!app.isPackaged) {
+    store.delete(STORE_KEY.USING_PRODUCT_CODE);
+    store.delete(STORE_KEY.USING_ACTIVATION_CODE);
+    store.delete(STORE_KEY.TRIAL_TIME_LEFT);
+  }
 
 
   if (store.get(STORE_KEY.TRIAL_TIME_LEFT) === undefined) {
@@ -479,7 +480,7 @@ app.whenReady().then(() => {
 
   if (!handleGetActivationStatus().isForever) {
     axios
-      .post("http://api.m.taobao.com/rest/api3.do?api=mtop.common.getTimestamp")
+      .post("https://acs.m.taobao.com/gw/mtop.common.getTimestamp/")
       .then((res) => {
         if (
           res &&
