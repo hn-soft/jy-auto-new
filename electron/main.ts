@@ -290,7 +290,6 @@ function createWindow() {
 
           //console.log(resBody);
 
-
           const ni = resBody.noticeinfo;
           const nih = resBody.noticeinfohtml;
           if (
@@ -326,11 +325,11 @@ function createWindow() {
   });
 
   //调试状态 删除注册信息
-  if (!app.isPackaged) {
-    store.delete(STORE_KEY.USING_PRODUCT_CODE);
-    store.delete(STORE_KEY.USING_ACTIVATION_CODE);
-    store.delete(STORE_KEY.TRIAL_TIME_LEFT);
-  }
+  // if (!app.isPackaged) {
+  //   store.delete(STORE_KEY.USING_PRODUCT_CODE);
+  //   store.delete(STORE_KEY.USING_ACTIVATION_CODE);
+  //   store.delete(STORE_KEY.TRIAL_TIME_LEFT);
+  // }
 
 
   if (store.get(STORE_KEY.TRIAL_TIME_LEFT) === undefined) {

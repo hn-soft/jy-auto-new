@@ -33,7 +33,7 @@ export default class Innovation extends React.Component<PropsType, StateType> {
     return (
       <div>
         <iframe
-          src={`https://friendpei.lxhfight.com/innovation?timestamp=${+new Date()}`}
+          src={`https://nqf2aryi5p.feishu.cn/docx/VWR9dPVfNoIu8wxZcUlctfgvn1d?from=from_copylink?timestamp=${+new Date()}`}
           title="更多软件资源"
           style={{ width: "100%", height: "99vh", backgroundColor: "white" }}
         ></iframe>
